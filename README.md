@@ -111,3 +111,104 @@ class AppWidget extends StatelessWidget {
   }
 }
 ```
+
+- Para o projeto ter funções e aparencia de aplicação podemos importar o MaterialApp
+```
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(AppWidget(
+    title: 'Hello World!',
+  ));
+}
+
+class AppWidget extends StatelessWidget {
+  final String title; // Criando titulo
+
+  const AppWidget({super.key, required this.title}); // Construtor 
+  
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.red
+      ),
+      home: Container(
+        child: Center(child: Text(title)),
+      ),
+    );
+  }
+}
+```
+
+# Aula 04
+- Statefull com estado é o método que pode ser alterado
+- Diferente do stateless não implementa o build, implementa um estado e precisamos criar uma nova classe para esse estado
+- Na classe state implementamos o build
+- E para chamar o widget criado chamamos a classe pai do state (No exemplo a classe HomePage)
+- Porque usar um statefull? Porque podemos alterar coisas durante a execução do app diferente do stateless
+````
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(AppWidget(
+    title: 'Hello World!',
+  ));
+}
+
+class AppWidget extends StatelessWidget {
+  final String title; // Criando titulo
+
+  const AppWidget({super.key, required this.title}); // Construtor 
+  
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.red
+      ),
+      home: HomePage()
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
+
+}
+
+class HomePageState extends State<HomePage> {
+  @override
+  Widget build(Object context) {
+    return Container(
+        child: Center(child: Text("Hello StateFull")),
+      );
+  }
+
+}
+```
+
+- O estado só é modificado se inserirmos as modificações dentro de setState(() {// Aqui})
+````
+class HomePageState extends State<HomePage> {
+  int counter = 0;
+
+  @override
+  Widget build(Object context) {
+    return Container(
+        child: Center(
+          child: GestureDetector(
+            child: Text("Contador: $counter"), 
+            onTap: (){
+              setState(() {
+                counter++;
+              });
+            },
+          )),
+      );
+  }
+}
+```
