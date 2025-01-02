@@ -147,7 +147,7 @@ class AppWidget extends StatelessWidget {
 - Na classe state implementamos o build
 - E para chamar o widget criado chamamos a classe pai do state (No exemplo a classe HomePage)
 - Porque usar um statefull? Porque podemos alterar coisas durante a execução do app diferente do stateless
-````
+```
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -192,7 +192,7 @@ class HomePageState extends State<HomePage> {
 ```
 
 - O estado só é modificado se inserirmos as modificações dentro de setState(() {// Aqui})
-````
+```
 class HomePageState extends State<HomePage> {
   int counter = 0;
 
@@ -211,4 +211,74 @@ class HomePageState extends State<HomePage> {
       );
   }
 }
+```
+
+# Aula 05
+- Organizando as classes em arquivos
+- app_widget.dart
+```
+import 'package:flutter/material.dart';
+import 'home_page.dart';
+
+class AppWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.red
+      ),
+      home: HomePage()
+    );
+  }
+}
+```
+- home_page.dart
+```
+import 'package:flutter/material.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
+
+}
+
+class HomePageState extends State<HomePage> {
+  int counter = 0;
+  String definition = "Null";
+
+  @override
+  Widget build(Object context) {
+    return Container(
+        child: Center(
+          child: GestureDetector(
+            child: Text("$counter é $definition"), 
+            onTap: (){
+              setState(() {
+                counter++;
+                if (counter%2==0) {
+                  definition = "Par";
+                } else {
+                  definition = "Ímpar";
+                }
+              });
+            },
+          )
+        ),
+      );
+  }
+}
+```
+- main.dart
+```
+import 'package:flutter/material.dart';
+
+import 'app_widget.dart';
+
+void main(List<String> args) {
+  runApp(AppWidget(
+  ));
+}
+
 ```
