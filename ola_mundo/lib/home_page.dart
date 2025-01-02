@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  // int counter = 0;
+  int counter = 0;
   // String definition = "Null";
 
   @override
@@ -22,22 +22,26 @@ class HomePageState extends State<HomePage> {
           CustomSwitch()
           ],
       ),
-      body: Center(
-        child: CustomSwitch(),
+      body: Container(
+        width: double.infinity, // Faz o componente ocupar toda dimensão horizontalmente
+        height: double.infinity, // Faz o componente ocupar toda dimensão verticalmente
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, // Centraliza o componente em x e y
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Contador: $counter'),
+            CustomSwitch(),
+          ],
         ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          AppController.instance.changeTheme();
+          // AppController.instance.changeTheme();
 
-          // setState(() {
-          //       counter++;
-          //       if (counter%2==0) {
-          //         definition = "Par";
-          //       } else {
-          //         definition = "Ímpar";
-          //       }
-          //     });
+          setState(() {
+                counter++;
+              });
         }),
     );
   }
