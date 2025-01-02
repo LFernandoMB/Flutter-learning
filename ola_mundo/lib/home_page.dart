@@ -6,7 +6,6 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() {
     return HomePageState();
   }
-
 }
 
 class HomePageState extends State<HomePage> {
@@ -19,13 +18,12 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Home page'),
         backgroundColor: Color.fromARGB(236, 226, 213, 31),
+        actions: [
+          CustomSwitch()
+          ],
       ),
       body: Center(
-        child: Switch(
-          value: AppController.instance.isDarkTheme, 
-          onChanged: (value) {
-            AppController.instance.changeTheme();
-          }),
+        child: CustomSwitch(),
         ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -42,5 +40,16 @@ class HomePageState extends State<HomePage> {
           //     });
         }),
     );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+          value: AppController.instance.isDarkTheme, 
+          onChanged: (value) {
+            AppController.instance.changeTheme();
+          });
   }
 }

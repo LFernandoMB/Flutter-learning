@@ -21,10 +21,11 @@ Learning Flutter language
 - IDE (Visual Studio Code)
     - Pluggin: Flutter (dart-code.flutter)
 
-### Flutter commands (CMD)
+### Flutter commands (CMD and shortcuts)
 - flutter doctor - Sugere melhorias de instalação
 - flutter create <ola_mundo> - Criando um projeto chamado "ola_mundo" (O Flutter não aceita "-" no nome de arquivo)
 - flutter run - Rodar esse comando na root
+- stl + enter : Criando estruturas stateless
 
 # Aula 02
 - Flutter trabalha com orientação a objeto
