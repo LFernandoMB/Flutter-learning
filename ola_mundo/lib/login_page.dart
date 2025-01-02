@@ -22,6 +22,14 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  width: 150,
+                  height: 150,
+                  child: Image.network(
+                    'https://img.freepik.com/vetores-gratis/letra-colorida-um-design-de-logotipo-gradiente_474888-2309.jpg'
+                  ),
+                ),
+                SizedBox(height: 25),
                 TextField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -43,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                     password = text;
                   },
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 25),
                 TextButton(onPressed: () {
                   if(email == 'email@email.com' && password == '123456') {
                     // Rotas Manuais
