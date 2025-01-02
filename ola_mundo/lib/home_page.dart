@@ -25,45 +25,13 @@ class HomePageState extends State<HomePage> {
       body: Container(
         width: double.infinity, // Faz o componente ocupar toda dimensão horizontalmente
         height: double.infinity, // Faz o componente ocupar toda dimensão verticalmente
-        child: ListView( // Componente que cria o Scroll
-          // mainAxisAlignment: MainAxisAlignment.center, // Centraliza o componente em x e y
+        child: Column( // Componente que cria o Scroll
+          mainAxisAlignment: MainAxisAlignment.center, // Centraliza o componente em x e y
           // crossAxisAlignment: CrossAxisAlignment.start,
-          scrollDirection: Axis.horizontal, // Alinhando os componentes na direção horizontal
-          
+          // scrollDirection: Axis.horizontal, // Alinhando os componentes na direção horizontal
+
           children: [
             Text('Contador: $counter'),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
-            Container(height: 25),
-            CustomSwitch(),
             Container(height: 25),
             CustomSwitch(),
             Container(height: 25),

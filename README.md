@@ -26,6 +26,7 @@ Learning Flutter language
 - flutter create <ola_mundo> - Criando um projeto chamado "ola_mundo" (O Flutter não aceita "-" no nome de arquivo)
 - flutter run - Rodar esse comando na root
 - stl + enter : Criando estruturas stateless
+- stf + enter : Criando estruturas statefull
 - ctrl + shift + p >> flutter debug painting : Contorna os componentes para faciliar a visualização (Toggle para desligar)
 
 # Aula 02
