@@ -92,8 +92,13 @@ class LoginSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
           onPressed: () {
-            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage())); // Cria nova sobrepondo
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Destroi e cria nova
+            // Rotas manuais
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage())); // Cria nova tela sobrepondo
+            // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Cria nova tela e destroi tela atual
+            
+            // Rotas Automáticas
+            // Navigator.of(context).pushNamed('/'); // Cria nova tela sobrepondo
+            Navigator.of(context).pushReplacementNamed('/'); // Cria nova tela e destroi tela atual
           },
           child: Text('Login')
         );

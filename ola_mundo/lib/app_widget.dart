@@ -14,7 +14,12 @@ class AppWidget extends StatelessWidget {
         primarySwatch: Colors.red,
         brightness: AppController.instance.isDarkTheme ? Brightness.dark : Brightness.light,
       ),
-      home: LoginPage()
+      // home: LoginPage()
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
+      },
     );
     },
     );

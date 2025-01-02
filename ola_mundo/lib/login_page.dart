@@ -46,8 +46,13 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 15),
                 TextButton(onPressed: () {
                   if(email == 'email@email.com' && password == '123456') {
+                    // Rotas Manuais
                     // Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela por cima da tela atual
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela e destrói tela atual
+                    // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela e destrói tela atual
+                  
+                    // Rotas Automáticas
+                    // Navigator.of(context).pushNamed('/home'); // Cria nova tela sobrepondo
+                    Navigator.of(context).pushReplacementNamed('/home'); // Cria nova tela e destroi tela atual
                   }
                 }, 
                 child: Text('Entrar'))
