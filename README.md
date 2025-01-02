@@ -25,3 +25,37 @@ Learning Flutter language
 - flutter doctor - Sugere melhorias de instalação
 - flutter create <ola_mundo> - Criando um projeto chamado "ola_mundo" (O Flutter não aceita "-" no nome de arquivo)
 - flutter run - Rodar esse comando na root
+
+# Aula 02
+- Flutter trabalha com orientação a objeto
+- Nas classes criadas sempre precisamos ter o método builder, pois esse método trás oque é necessário para o Skia desenhar na tela
+- Hot Reload - Atualiza o app rodando conforme são feitas as alterações
+- Widget: Componente
+
+### Código básico para um projeto em Flutter
+```
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(Container());
+}
+```
+
+- Trabalharemos sempre com Widgets
+- No exemplo abaixo escrevemos um texto centralizado com tamanho 50.0
+
+```
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(Container(
+    child: Center(
+      child: Text(
+        'Hello World!', 
+        textDirection: TextDirection.ltr,
+        style: TextStyle(color: Colors.white, fontSize: 50.0),
+      ),
+    ),
+  ));
+}
+```
