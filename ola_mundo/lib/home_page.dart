@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ola_mundo/app_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,8 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  int counter = 0;
-  String definition = "Null";
+  // int counter = 0;
+  // String definition = "Null";
 
   @override
   Widget build(Object context) {
@@ -19,29 +20,26 @@ class HomePageState extends State<HomePage> {
         title: Text('Home page'),
         backgroundColor: Color.fromARGB(236, 226, 213, 31),
       ),
-      body: Container(
-        height: 200,
-        width: 200,
-        color: Colors.black,
-        child: Center(
-          child: Container(
-            height: 100,
-            width: 100,
-            color: Colors.green,
-          ),
+      body: Center(
+        child: Switch(
+          value: AppController.instance.isDarkTheme, 
+          onChanged: (value) {
+            AppController.instance.changeTheme();
+          }),
         ),
-      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          setState(() {
-                counter++;
-                if (counter%2==0) {
-                  definition = "Par";
-                } else {
-                  definition = "Ímpar";
-                }
-              });
+          AppController.instance.changeTheme();
+
+          // setState(() {
+          //       counter++;
+          //       if (counter%2==0) {
+          //         definition = "Par";
+          //       } else {
+          //         definition = "Ímpar";
+          //       }
+          //     });
         }),
     );
   }
