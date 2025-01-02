@@ -282,3 +282,61 @@ void main(List<String> args) {
 }
 
 ```
+
+# Aula 06
+## Renderização de Tela - Single Render e Multi Render
+- Os conceitos de single render e multi render no Flutter estão diretamente relacionados à forma como os widgets são construídos e renderizados na tela
+- Filhos acabam herdando características de seus pais, apenas um Render para executar as características
+- Para conseguir utilizar características diferentes é necessário atribuir o widget à um SingleRender
+- SingleRender irá criar um novo render
+
+Os conceitos de single render e multi render no Flutter estão diretamente relacionados à forma como os widgets são construídos e renderizados na tela. Essa compreensão é fundamental para otimizar o desempenho de suas aplicações Flutter e criar interfaces de usuário mais eficientes.
+
+Single Render
+* O que é: Quando um widget é marcado como tendo um único filho (single-child), ele significa que esse widget só pode conter um único elemento filho dentro de sua estrutura.
+* Exemplo: Um Container é um exemplo clássico de widget que aceita apenas um filho. Você pode colocar um Text, um Image ou outro widget dentro dele, mas não vários diretamente.
+* Vantagens:
+  * Simplicidade: A estrutura do widget fica mais clara e organizada.
+  * Performance: Em alguns casos, o Flutter pode otimizar a renderização de widgets com um único filho.
+
+Multi Render
+* O que é: Widgets que aceitam múltiplos filhos (multi-child) podem conter vários elementos filhos dentro de sua estrutura.
+* Exemplo: Um Row ou um Column são exemplos de widgets que aceitam múltiplos filhos. Você pode colocar vários Text, Icon e outros widgets dentro deles para criar layouts mais complexos.
+* Vantagens:
+Flexibilidade: Permite criar layouts mais complexos e personalizados.
+Reutilização: Widgets como Row e Column são muito úteis para criar layouts responsivos e adaptáveis.
+
+Quando usar cada um?
+* Single Render:
+Quando você precisa de um container simples para um único elemento.
+Quando a performance é crítica e você quer evitar renderizações desnecessárias.
+* Multi Render:
+Quando você precisa criar layouts mais complexos com múltiplos elementos.
+Quando você precisa criar layouts responsivos e adaptáveis.
+
+### A importância do State e da Renderização
+* State: O estado de um widget define como ele é exibido na tela. Quando o estado muda, o widget é reconstruído e a tela é atualizada.
+* Renderização: A renderização é o processo de criar a representação visual de um widget na tela.
+
+Ao entender esses conceitos, você pode:
+* Otimizar o desempenho: Evitando reconstruções desnecessárias de widgets.
+* Criar interfaces de usuário mais complexas: Utilizando widgets que aceitam múltiplos filhos.
+* Escrever código mais limpo e organizado: Utilizando a estrutura correta de widgets para cada situação.
+
+```
+// Single Render
+Container(
+  color: Colors.blue,
+  child: Text('Olá, mundo!'),
+)
+
+// Multi Render
+Row(
+  children: [
+    Icon(Icons.home),
+    Text('Home'),
+  ],
+)
+```
+
+# Aula 07

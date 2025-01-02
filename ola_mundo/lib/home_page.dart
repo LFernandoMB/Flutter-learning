@@ -19,24 +19,18 @@ class HomePageState extends State<HomePage> {
         title: Text('Home page'),
         backgroundColor: Color.fromARGB(236, 226, 213, 31),
       ),
-      body: Center(
-          child: GestureDetector(
-            child: Text(
-              "$counter é $definition",
-              style: TextStyle(fontSize: 30.0),
-            ), 
-            onTap: (){
-              setState(() {
-                counter++;
-                if (counter%2==0) {
-                  definition = "Par";
-                } else {
-                  definition = "Ímpar";
-                }
-              });
-            },
-          )
+      body: Container(
+        height: 200,
+        width: 200,
+        color: Colors.black,
+        child: Center(
+          child: Container(
+            height: 100,
+            width: 100,
+            color: Colors.green,
+          ),
         ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
