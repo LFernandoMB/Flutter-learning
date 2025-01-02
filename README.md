@@ -4,7 +4,7 @@ Learning Flutter language
 # Referencia
 - Flutterando: [Playlist](https://www.youtube.com/watch?v=XeUiJJN0vsE&list=PLlBnICoI-g-d-J57QIz6Tx5xtUDGQdBFB&index=1)
 
-# Aula 01
+# Estrutura e funcionamento
 - Flutter é um framework feito em Dart
 - Utiliza uma estrutura declarativa e POO
 - pubspec.yaml - Gerenciador de pacotes
@@ -29,7 +29,7 @@ Learning Flutter language
 - stf + enter : Criando estruturas statefull
 - ctrl + shift + p >> flutter debug painting : Contorna os componentes para faciliar a visualização (Toggle para desligar)
 
-# Aula 02
+# Composição e execução
 - Flutter trabalha com orientação a objeto
 - Nas classes criadas sempre precisamos ter o método builder, pois esse método trás oque é necessário para o Skia desenhar na tela
 - Hot Reload - Atualiza o app rodando conforme são feitas as alterações
@@ -63,7 +63,7 @@ void main(List<String> args) {
 }
 ```
 
-# Aula 03
+# Stateless e Statefull
 - Estado Global e Local
 - Stateless (Sem estado) - Statefull (Com estado)
 
@@ -144,8 +144,8 @@ class AppWidget extends StatelessWidget {
 }
 ```
 
-# Aula 04
-- Statefull com estado é o método que pode ser alterado
+### Statefull
+- Statefull - com estado,  é o método que pode ser alterado
 - Diferente do stateless não implementa o build, implementa um estado e precisamos criar uma nova classe para esse estado
 - Na classe state implementamos o build
 - E para chamar o widget criado chamamos a classe pai do state (No exemplo a classe HomePage)
@@ -216,7 +216,7 @@ class HomePageState extends State<HomePage> {
 }
 ```
 
-# Aula 05
+# Organização e separação em arquivos
 - Organizando as classes em arquivos
 - app_widget.dart
 ```
@@ -286,8 +286,7 @@ void main(List<String> args) {
 
 ```
 
-# Aula 06
-## Renderização de Tela - Single Render e Multi Render
+# Renderização de Tela - Single Render e Multi Render
 - Os conceitos de single render e multi render no Flutter estão diretamente relacionados à forma como os widgets são construídos e renderizados na tela
 - Filhos acabam herdando características de seus pais, apenas um Render para executar as características
 - Para conseguir utilizar características diferentes é necessário atribuir o widget à um SingleRender
@@ -341,3 +340,9 @@ Row(
   ],
 )
 ```
+
+# Debug
+- Inserir breakpoint na lateral esquerda da parte de código da IDE
+- Quando estiver em modo Debug ele irá pausar no breakpoint inserido
+- Com isso podemos ver qual valor de variáveis e analisar o estado atual da aplicação
+- Podemos verificar valores, pegar certificados e várias outras ações
