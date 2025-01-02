@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ola_mundo/app_controller.dart';
 
+import 'login_page.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +21,7 @@ class HomePageState extends State<HomePage> {
         title: Text('Home page'),
         backgroundColor: Color.fromARGB(236, 226, 213, 31),
         actions: [
-          CustomSwitch()
+          LoginSwitch()
           ],
       ),
       body: Container(
@@ -83,4 +85,17 @@ class CustomSwitch extends StatelessWidget {
             AppController.instance.changeTheme();
           });
   }
+}
+
+class LoginSwitch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+          onPressed: () {
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage())); // Cria nova sobrepondo
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Destroi e cria nova
+          },
+          child: Text('Login')
+        );
+    }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'app_controller.dart';
+import 'package:ola_mundo/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -46,8 +45,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 15),
                 TextButton(onPressed: () {
-                  if(email == 'l.fernandomb7@gmail.com' && password == '123456') {
-                    AppController.instance.changeTheme();
+                  if(email == 'email@email.com' && password == '123456') {
+                    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela por cima da tela atual
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela e destrói tela atual
                   }
                 }, 
                 child: Text('Entrar'))
