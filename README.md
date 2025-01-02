@@ -59,3 +59,55 @@ void main(List<String> args) {
   ));
 }
 ```
+
+# Aula 03
+- Estado Global e Local
+- Stateless (Sem estado) - Statefull (Com estado)
+
+### Stateless
+- Não tem alteração a não ser que o método pai o reconstrua
+- Criamos uma classe que extende de StatelessWidget
+- Implementamos o método build (Como QuickFix)
+- Retornamos no método oque desejamos criar
+
+```
+class AppWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    child: Center(
+      child: Text(
+        'Hello World!', 
+        textDirection: TextDirection.ltr,
+        style: TextStyle(color: Colors.white, fontSize: 50.0),
+      ),
+    ),
+  );
+  }
+}
+```
+
+- Chamamos a classe
+
+```
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(AppWidget());
+}
+
+class AppWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    child: Center(
+      child: Text(
+        'Hello World!', 
+        textDirection: TextDirection.ltr,
+        style: TextStyle(color: Colors.white, fontSize: 50.0),
+      ),
+    ),
+  );
+  }
+}
+```
