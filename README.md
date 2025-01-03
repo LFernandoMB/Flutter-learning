@@ -24,6 +24,8 @@ Learning Flutter language
 ### Flutter commands (CMD and shortcuts)
 - flutter doctor - Sugere melhorias de instalação
 - flutter create <ola_mundo> - Criando um projeto chamado "ola_mundo" (O Flutter não aceita "-" no nome de arquivo)
+- flutter clean - limpa os builds feitos
+- flutter pub get - Instala as depencias do "pubspec.yaml"
 - flutter run - Rodar esse comando na root
 - stl + enter : Criando estruturas stateless
 - stf + enter : Criando estruturas statefull
