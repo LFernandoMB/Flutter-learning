@@ -29,40 +29,59 @@ Widget _body() {
                   child: Image.asset('assets/images/itau.png'),
                 ),
                 SizedBox(height: 25),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: 'E-mail',
-                    border: OutlineInputBorder()
+                Card(
+                  child: Padding(
+                    // padding: const EdgeInsets.all(12.0), // Padding igual em todos os lados
+                    padding: const EdgeInsets.only(left: 12, right: 12, top: 25, bottom: 20), // Padding especifico para cada lado
+                    child: Column(
+                      children: [
+                        TextField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: 'E-mail',
+                            border: OutlineInputBorder()
+                          ),
+                          onChanged: (text) {
+                            email = text;
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder()
+                          ),
+                          onChanged: (text) {
+                            password = text;
+                          },
+                        ),
+                        SizedBox(height: 25),
+                        TextButton(
+                          onPressed: () {
+                            if(email == 'email@email.com' && password == '123456') {
+                              // Rotas Manuais
+                              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela por cima da tela atual
+                              // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela e destrói tela atual
+                            
+                              // Rotas Automáticas
+                              // Navigator.of(context).pushNamed('/home'); // Cria nova tela sobrepondo
+                              Navigator.of(context).pushReplacementNamed('/home'); // Cria nova tela e destroi tela atual
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 243, 122, 23), // Cor de fundo
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          child: Container(
+                            width:double.infinity,
+                            child: Text('Entrar', textAlign: TextAlign.center,))),
+                        ],
+                      ),
                   ),
-                  onChanged: (text) {
-                    email = text;
-                  },
                 ),
-                SizedBox(height: 10),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder()
-                  ),
-                  onChanged: (text) {
-                    password = text;
-                  },
-                ),
-                SizedBox(height: 25),
-                TextButton(onPressed: () {
-                  if(email == 'email@email.com' && password == '123456') {
-                    // Rotas Manuais
-                    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela por cima da tela atual
-                    // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage())); // Cria a nova tela e destrói tela atual
-                  
-                    // Rotas Automáticas
-                    // Navigator.of(context).pushNamed('/home'); // Cria nova tela sobrepondo
-                    Navigator.of(context).pushReplacementNamed('/home'); // Cria nova tela e destroi tela atual
-                  }
-                }, 
-                child: Text('Entrar'))
               ],
             ),
           ),
