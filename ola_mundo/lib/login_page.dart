@@ -25,9 +25,10 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   width: 150,
                   height: 150,
-                  child: Image.network(
-                    'https://img.freepik.com/vetores-gratis/letra-colorida-um-design-de-logotipo-gradiente_474888-2309.jpg'
-                  ),
+                  // child: Image.network(
+                  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2023_Ita%C3%BA_Unibanco_Logo.png/1200px-2023_Ita%C3%BA_Unibanco_Logo.png'
+                  // ),
+                  child: Image.asset('assets/images/itau.png'),
                 ),
                 SizedBox(height: 25),
                 TextField(
