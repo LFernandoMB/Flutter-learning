@@ -15,8 +15,35 @@ class HomePageState extends State<HomePage> {
   // String definition = "Null";
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: Image.network('https://media.licdn.com/dms/image/v2/C4D03AQH_j6FOGY1n7A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1594345055657?e=1741219200&v=beta&t=24ongvo99SGrOwp7_hf_XwPX28K_on7wpe-beYE2inM'),
+              accountName: Text("Luis Fernando"), 
+              accountEmail: Text("email@email.com")
+              ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Início'),
+              subtitle: Text('Tela de início'),
+              onTap: () {
+                AppController.instance.changeTheme();
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Sair'),
+              subtitle: Text('Finalizar sessão'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Home page'),
         backgroundColor: Color.fromARGB(236, 226, 213, 31),
