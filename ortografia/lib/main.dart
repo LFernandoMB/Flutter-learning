@@ -5,6 +5,8 @@ import 'dart:convert';
 void main() => runApp(SpellCheckApp());
 
 class SpellCheckApp extends StatelessWidget {
+  const SpellCheckApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,12 +16,14 @@ class SpellCheckApp extends StatelessWidget {
 }
 
 class SpellCheckHome extends StatefulWidget {
+  const SpellCheckHome({super.key});
+
   @override
   _SpellCheckHomeState createState() => _SpellCheckHomeState();
 }
 
 class _SpellCheckHomeState extends State<SpellCheckHome> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   List<dynamic> suggestions = [];
   Set<int> appliedSuggestions = {}; // NOVO: guarda os índices aplicados
 

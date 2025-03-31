@@ -4,6 +4,8 @@ import 'package:ola_mundo/app_controller.dart';
 import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return HomePageState();
@@ -54,7 +56,7 @@ class HomePageState extends State<HomePage> {
           LoginSwitch()
           ],
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity, // Faz o componente ocupar toda dimensão horizontalmente
         height: double.infinity, // Faz o componente ocupar toda dimensão verticalmente
         child: Column( // Componente que cria o Scroll
@@ -107,6 +109,8 @@ class HomePageState extends State<HomePage> {
 }
 
 class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Switch(
@@ -118,6 +122,8 @@ class CustomSwitch extends StatelessWidget {
 }
 
 class LoginSwitch extends StatelessWidget {
+  const LoginSwitch({super.key});
+
   @override
   Widget build(BuildContext context) {
     return TextButton(

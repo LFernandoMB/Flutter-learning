@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ola_mundo/home_page.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -20,7 +22,7 @@ Widget _body() {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 150,
                   height: 150,
                   // child: Image.network(
@@ -75,7 +77,7 @@ Widget _body() {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          child: Container(
+                          child: SizedBox(
                             width:double.infinity,
                             child: Text('Entrar', textAlign: TextAlign.center,))),
                         ],
