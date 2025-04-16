@@ -2,119 +2,91 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-void main() => runApp(SpellCheckApp());
+void main() {
+  runApp(const SpellingApp());
+}
 
-class SpellCheckApp extends StatelessWidget {
-  const SpellCheckApp({super.key});
+class SpellingApp extends StatelessWidget {
+  const SpellingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SpellCheckHome(),
+      title: 'Spelling Corrector',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const SpellingHomePage(),
     );
   }
 }
 
-class SpellCheckHome extends StatefulWidget {
-  const SpellCheckHome({super.key});
+class SpellingHomePage extends StatefulWidget {
+  const SpellingHomePage({super.key});
 
   @override
-  _SpellCheckHomeState createState() => _SpellCheckHomeState();
+  State<SpellingHomePage> createState() => _SpellingHomePageState();
 }
 
-class _SpellCheckHomeState extends State<SpellCheckHome> {
+class _SpellingHomePageState extends State<SpellingHomePage> {
   final TextEditingController _controller = TextEditingController();
-  List<dynamic> suggestions = [];
-  Set<int> appliedSuggestions = {}; // NOVO: guarda os índices aplicados
+  bool _isLoading = false;
 
-  Future<void> checkSpelling() async {
-    final url = Uri.parse('https://api.languagetool.org/v2/check');
+  Future<void> _sendTextToApi() async {
+    final String text = _controller.text;
 
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      },
-      body: {
-        'text': _controller.text,
-        'language': 'pt-BR',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      var result = jsonDecode(utf8.decode(response.bodyBytes));
-      List matches = result['matches'];
-
-      setState(() {
-        suggestions = matches;
-        appliedSuggestions.clear(); // limpa quando faz nova verificação
-      });
-    } else {
-      print('Erro na API');
-    }
-  }
-
-  void applySuggestion(int index, int offset, int length, String replacement) {
-    String newText = _controller.text;
-    newText = newText.replaceRange(offset, offset + length, replacement);
+    if (text.isEmpty) return;
 
     setState(() {
-      _controller.text = newText;
-      appliedSuggestions.add(index); // marca sugestão como aplicada
-      // remove todas quando todas forem aplicadas
-      if (appliedSuggestions.length == suggestions.length) {
-        suggestions.clear();
-        appliedSuggestions.clear();
+      _isLoading = true;
+    });
+
+    const String apiUrl = "http://127.0.0.1:5000/spelling";
+
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({"spelling": text}),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        setState(() {
+          _controller.text = data['spelling'];
+        });
+      } else {
+        print("Erro da API: ${response.body}");
       }
+    } catch (e) {
+      print("Erro na requisição: $e");
+    }
+
+    setState(() {
+      _isLoading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Correção Ortográfica')),
+      appBar: AppBar(title: const Text('Correção Ortográfica')),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: _controller,
-              maxLines: 5,
-              decoration: InputDecoration(
+              maxLines: null,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Digite seu texto...',
+                labelText: 'Digite o texto',
               ),
             ),
-            SizedBox(height: 20),
-            suggestions.isNotEmpty
-                ? Wrap(
-                    spacing: 8.0,
-                    children: List.generate(suggestions.length, (index) {
-                      if (appliedSuggestions.contains(index)) {
-                        // já corrigido, não mostra mais
-                        return SizedBox();
-                      }
-                      var match = suggestions[index];
-                      String firstReplacement = match['replacements'].isNotEmpty
-                          ? match['replacements'][0]['value']
-                          : '';
-
-                      return ElevatedButton(
-                        onPressed: () => applySuggestion(
-                          index,
-                          match['offset'],
-                          match['length'],
-                          firstReplacement,
-                        ),
-                        child: Text(firstReplacement),
-                      );
-                    }),
-                  )
-                : Text(''),
-            SizedBox(height: 20),
+            const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: checkSpelling,
-              child: Text('Verificar Ortografia'),
+              onPressed: _isLoading ? null : _sendTextToApi,
+              child: _isLoading
+                  ? const CircularProgressIndicator()
+                  : const Text("Corrigir Texto"),
             ),
           ],
         ),
