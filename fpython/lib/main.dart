@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
           Expanded(
             child: InAppWebView(
             initialUrlRequest: URLRequest(
-              url: WebUri("http://127.0.0.1:8080"),
+              url: WebUri("http://100.97.72.68:9090"),
               ),
             ),
           )
