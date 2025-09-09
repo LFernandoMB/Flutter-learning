@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" 
+           Name="Molde IDEB" 
+           Language="1033" 
+           Version="1.0.0.0" 
+           Manufacturer="SuaEmpresa" 
+           UpgradeCode="a2be8552-b282-4782-b8d6-ba0a0bfde6e8">
+    <Package InstallerVersion="500" 
+             Compressed="yes" 
+             InstallScope="perMachine" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Molde IDEB" />
+      </Directory>
+
+      <!-- Menu Iniciar -->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Molde IDEB"/>
+      </Directory>
+
+      <!-- Área de Trabalho -->
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+    </Directory>
+
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <!-- Puxa os arquivos gerados pelo heat -->
+      <ComponentGroupRef Id="AppFiles" />
+
+      <!-- Atalho no Menu Iniciar -->
+      <Component Id="ApplicationShortcut" Guid="*">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="Molde IDEB"
+                  Description="Abrir Molde IDEB"
+                  Target="[INSTALLFOLDER]molde.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="AppIcon.ico" />
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\MoldeIDEB" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+
+      <!-- Atalho na Área de Trabalho -->
+      <Component Id="ApplicationDesktopShortcut" Guid="*">
+        <Shortcut Id="ApplicationDesktopShortcutId"
+                  Directory="DesktopFolder"
+                  Name="Molde IDEB"
+                  Description="Abrir Molde IDEB"
+                  Target="[INSTALLFOLDER]molde.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="AppIcon.ico" />
+        <RegistryValue Root="HKCU" Key="Software\MoldeIDEB" Name="desktop" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="ProductFeature" Title="Molde IDEB" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+
+    <!-- Ícone do programa -->
+    <Icon Id="AppIcon.ico" SourceFile="AppIcon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="AppIcon.ico"/>
+  </Product>
+</Wix>
