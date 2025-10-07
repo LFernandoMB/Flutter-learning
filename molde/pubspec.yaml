@@ -13,10 +13,18 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  flutter_inappwebview: ^6.1.5
+  # flutter_inappwebview: ^6.1.5
+  # flutter_inappwebview: 
+  #   path: local_plugins/flutter_inappwebview/flutter_inappwebview
+
+  webview2_egov:
+    path: local_plugins/webview2_egov
+
   webview_windows: ^0.4.0
   path_provider: ^2.1.5
   msix: ^3.16.12
+  ffi: ^2.1.4
+  win32: ^5.13.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
