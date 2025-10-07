@@ -1,0 +1,11 @@
+name: webview2_egov
+description: Plugin mínimo para usar WebView2 nativo no Flutter Windows
+version: 0.0.1
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+flutter:
+  plugin:
+    platforms:
+      windows:
+        pluginClass: Webview2Egov
